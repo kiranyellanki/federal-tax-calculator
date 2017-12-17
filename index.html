@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Federal Tax Calculator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:title" content="Federal Tax Calculator" />
+    <meta property="og:image" content="http://www.federaltaxcalculator.info/homepage.png" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <style>
+      .page-title {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-container {
+        width:100%;
+        margin:60px 0 80px 0;
+      }
+
+      .form-content {
+        max-width: 400px;
+        margin: 0 auto 20px auto;
+      }
+
+      .results {
+        width: 100%;
+        display: none;
+        margin-top: 20px
+      }
+
+      th {
+        text-align: center;
+      }
+
+      .table {
+        margin-bottom: 40px;
+      }
+    </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-16601612-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-16601612-3');
+    </script>
+
+  </head>
+
+  <body>
+    <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+    <!-- Federal Tax Leaderboard -->
+    <!-- <ins class="adsbygoogle"
+         style="display:inline-block;width:728px;height:90px"
+         data-ad-client="ca-pub-0890360570117425"
+         data-ad-slot="8198676613"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script> -->
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <a class="navbar-brand" href="#">Fedral Tax Calculator</a>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <div class="form-container">
+            <div class="form-content">
+              <p>Compare new tax brackets with old tax bracket.</p>
+              <div class="form-group">
+                <label for="filingType">Filing Status</label>
+                <select id="filingType" name="filingType" class="form-control">
+                  <option value="single">Single</option>
+                  <option value="family">Filing Jointly</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="income">Annual Income(Federal Taxable Income)</label>
+                <input name="income" type="number" class="form-control"/>
+              </div>
+              <button id="calculate" type="button" class="btn btn-primary btn-lg btn-block">Calculate</button>
+
+              <table class="results table table-sm table-bordered">
+                <thead class="table-success">
+                  <tr>
+                    <th>Old Tax</th>
+                    <th>New Tax</th>
+                    <th>Savings</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td id="old"></td>
+                    <td id="new"></td>
+                    <td id="savings"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <h2>2017 Tax Brackets</h2>
+          <table class="table table-sm table-bordered table-striped table-responsive">
+            <thead class="table-info">
+              <tr>
+                <th colspan="3">Filing Status Single</th>
+              </tr>
+              <tr>
+                <th>Rate</th>
+                <th>Taxable Income Bracket</th>
+                <th>Tax Owed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10%</td>
+                <td>$0 to $9,325</td>
+                <td>10% of taxable income</td>
+              </tr>
+              <tr>
+                <td>15%</td>
+                <td>$9,325 to $37,950</td>
+                <td>$932.50 plus 15% of the excess over $9,325</td>
+              </tr>
+              <tr>
+                <td>25%</td>
+                <td>$37,950 to $91,900</td>
+                <td>$5,226.25 plus 25% of the excess over $37,950</td>
+              </tr>
+              <tr>
+                <td>28%</td>
+                <td>$91,900 to $191,650</td>
+                <td>$18,713.75 plus 28% of the excess over $91,900</td>
+              </tr>
+              <tr>
+                <td>33%</td>
+                <td>$191,650 to $416,700</td>
+                <td>$46,643.75 plus 33% of the excess over $191,650</td>
+              </tr>
+              <tr>
+                <td>35%</td>
+                <td>$416,700 to $418,400</td>
+                <td>$120,910.25 plus 35% of the excess over $416,700</td>
+              </tr>
+              <tr>
+                <td>39.60%</td>
+                <td>$418,400+</td>
+                <td>$121,505.25 plus 39.6% of the excess over $418,400</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <h2>2018 Tax Brackets</h2>
+          <table class="table table-sm table-bordered table-striped table-responsive">
+            <thead class="table-info">
+              <tr>
+                <th colspan="3">Filing Status Single</th>
+              </tr>
+              <tr>
+                <th>Rate</th>
+                <th>Taxable Income Bracket</th>
+                <th>Tax Owed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10%</td>
+                <td>$0 to $9,525</td>
+                <td>10% of taxable income</td>
+              </tr>
+              <tr>
+                <td>12%</td>
+                <td>$9,525 to $38,700</td>
+                <td>$952.50 plus 12% of the excess over $9,525</td>
+              </tr>
+              <tr>
+                <td>22%</td>
+                <td>$38,700 to $82,500</td>
+                <td>$4,453.50 plus 22% of the excess over $38,700</td>
+              </tr>
+              <tr>
+                <td>24%</td>
+                <td>$82,500 to $157,500</td>
+                <td>$14,089.50 plus 24% of the excess over $82,500</td>
+              </tr>
+              <tr>
+                <td>32%</td>
+                <td>$157,500 to $200,000</td>
+                <td>$32,089.50 plus 32% of the excess over $157,500</td>
+              </tr>
+              <tr>
+                <td>35%</td>
+                <td>$200,000 to $500,000</td>
+                <td>$45,689.50 plus 35% of the excess over $200,000</td>
+              </tr>
+              <tr>
+                <td>37%</td>
+                <td>$500,000+</td>
+                <td>$150,689.50 plus 37% of the excess over $500,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <table class="table table-sm table-bordered table-striped table-responsive">
+            <thead class="table-info">
+              <tr>
+                <th colspan="3">Filing Status Married</th>
+              </tr>
+              <tr>
+                <th>Rate</th>
+                <th>Taxable Income Bracket</th>
+                <th>Tax Owed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10%</td>
+                <td>$0 to $18,650</td>
+                <td>10% of taxable income</td>
+              </tr>
+              <tr>
+                <td>15%</td>
+                <td>$18,650 to $75,900</td>
+                <td>$1,865 plus 15% of the excess over $18,650</td>
+              </tr>
+              <tr>
+                <td>25%</td>
+                <td>$75,900 to $153,100</td>
+                <td>$10,452.50 plus 25% of the excess over $75,900</td>
+              </tr>
+              <tr>
+                <td>28%</td>
+                <td>$153,100 to $233,350</td>
+                <td>$29,752.50 plus 28% of the excess over $153,100</td>
+              </tr>
+              <tr>
+                <td>33%</td>
+                <td>$233,350 to $416,700</td>
+                <td>$52,222.50 plus 33% of the excess over $233,350</td>
+              </tr>
+              <tr>
+                <td>35%</td>
+                <td>$416,700 to $470,700</td>
+                <td>$112,728 plus 35% of the excess over $416,700</td>
+              </tr>
+              <tr>
+                <td>39.60%</td>
+                <td>$470,700+</td>
+                <td>$131,628 plus 39.6% of the excess over $470,700</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col col-lg-6 col-md-12 col-sm-12 col-xs-12">
+          <table class="table table-sm table-bordered table-striped table-responsive table-responsive-md">
+            <thead class="table-info">
+              <tr>
+                <th colspan="3">Filing Status Married</th>
+              </tr>
+              <tr>
+                <th>Rate</th>
+                <th>Taxable Income Bracket</th>
+                <th>Tax Owed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>10%</td>
+                <td>$0 to $19,050</td>
+                <td>10% of taxable income</td>
+              </tr>
+              <tr>
+                <td>12%</td>
+                <td>$19,050 to $77,400</td>
+                <td>$1,905 plus 12% of the excess over $19,050</td>
+              </tr>
+              <tr>
+                <td>22%</td>
+                <td>$77,400 to $165,000</td>
+                <td>$8,907 plus 22% of the excess over $77,400</td>
+              </tr>
+              <tr>
+                <td>24%</td>
+                <td>$165,000 to $315,000</td>
+                <td>$28,179 plus 24% of the excess over $165,000</td>
+              </tr>
+              <tr>
+                <td>32%</td>
+                <td>$315,000 to $400,000</td>
+                <td>$64,179 plus 32% of the excess over $315,000</td>
+              </tr>
+              <tr>
+                <td>35%</td>
+                <td>$400,000 to $600,000</td>
+                <td>$91,379 plus 35% of the excess over $400,000</td>
+              </tr>
+              <tr>
+                <td>37%</td>
+                <td>$600,000+</td>
+                <td>$161,379 plus 37% of the excess over $600,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      const TAX_INFO = {
+        family: {
+          old: {
+            percentages: [0.10, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396],
+            limits: [18650, 57250, 77200, 80250, 183350, 54000, null]
+          },
+          new: {
+            percentages: [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37],
+            limits: [19050, 58350, 87600, 150000, 85000, 200000, null]
+          }
+        },
+        single: {
+          old: {
+            percentages: [0.10, 0.15, 0.25, 0.28, 0.33, 0.35, 0.396],
+            limits: [9325, 28625, 53950, 99750, 225050, 1700, null]
+          },
+          new: {
+            percentages: [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37],
+            limits: [9525, 29175, 43800, 75000, 42500, 300000, null]
+          }
+        }
+      };
+
+      function getTotalTax(income, {percentages, limits}) {
+        let tax = 0;
+        let taxPointer = 0;
+        while(income > 0) {
+          if(income <= limits[taxPointer] || limits[taxPointer] === null) {
+            tax = tax + (income * percentages[taxPointer]);
+            income = 0;
+          } else {
+            income = income - limits[taxPointer];
+            tax = tax + (limits[taxPointer] * percentages[taxPointer]);
+          }
+          taxPointer++;
+        }
+        return tax;
+      }
+
+      function currencyFormat(amount) {
+        return `$${amount.replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")}`;
+      }
+
+      function getPecentage(amount, totalAmount) {
+        return ((amount*100)/totalAmount).toFixed(2);
+      }
+
+      $('#calculate').click(() => {
+        const income = parseInt($('input').val(), 10);
+        const filingType = $('#filingType').val();
+
+        if (!income) {
+          return;
+        }
+
+        const oldTax = getTotalTax(income, TAX_INFO[filingType].old).toFixed(2);
+        const newTax = getTotalTax(income, TAX_INFO[filingType].new).toFixed(2);
+        const oldTaxPercentage = getPecentage(oldTax, income);
+        const newTaxPercentage = getPecentage(newTax, income);
+        const savings = (oldTax - newTax).toFixed(2);
+        const savingsPercentage = getPecentage(savings, income);
+
+        $('#old').text(`${currencyFormat(oldTax)} (${oldTaxPercentage}%)`);
+        $('#new').text(`${currencyFormat(newTax)} (${newTaxPercentage}%)`);
+        $('#savings').text(`${currencyFormat(savings)} (${savingsPercentage}%)`);
+        $('.results').show();
+      });
+    </script>
+  </body>
+</html>
